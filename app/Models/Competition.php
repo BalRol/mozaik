@@ -3,12 +3,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Competition extends Model
 {
-    protected $table = 'user';
-    protected $primaryKey = ['name', 'email'];
+    protected $table = 'competition';
+    protected $primaryKey = ['name', 'year'];
     public $incrementing = false;
     public $timestamps = true;
 
     // A modell többi része
 }
+?>

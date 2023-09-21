@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('competition', function (Blueprint $table) {
+            $table->string('name', 200);
+            $table->year('year');
+            $table->string('location', 200);
+            $table->primary(['name', 'year']);
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('competition');
     }
 };
