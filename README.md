@@ -14,7 +14,8 @@ Ezen lépések segítenek elindítani a programot a helyi fejlesztői környezet
 
 2.1. Nyisd meg a parancssort (CMD vagy terminál) a projekt gyökérmappájában.
 
-2.2. Futtasd az alábbi parancsot a Laravel projekt elindításához: php artisan serve
+2.2. Futtasd az alábbi parancsot a Laravel projekt elindításához: php artisan serve.
+
 2.3. Miután a parancs lefutott, a Laravel alkalmazás a localhost:8000 címen lesz elérhető.
 
 3. Tesztek Futtatása
