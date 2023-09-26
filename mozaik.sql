@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Sze 26. 21:01
+-- Létrehozás ideje: 2023. Sze 26. 21:11
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `competition` (
 
 INSERT INTO `competition` (`name`, `year`, `location`) VALUES
 ('Summer Olympics Games', '2016', 'London'),
-('Summer Olympics Games', '2021', 'Tokio');
+('Summer Olympics Games', '2021', 'Tokyo');
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,13 @@ CREATE TABLE `competitor` (
   `email` varchar(200) NOT NULL,
   `round_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- A tábla adatainak kiíratása `competitor`
+--
+
+INSERT INTO `competitor` (`name`, `email`, `round_id`) VALUES
+('Alice Johnson', 'alice.johnson@example.com', 1);
 
 -- --------------------------------------------------------
 
