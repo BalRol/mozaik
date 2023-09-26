@@ -62,7 +62,7 @@
         <div class="mb-3">
             <input type="text" class="form-control m-1" id="roundName" placeholder="Name">
             <input type="text" class="form-control m-1" id="roundLocation" placeholder="Location">
-            <input type="text" class="form-control m-1" id="roundDate" placeholder="Date">
+            <input type="text" class="form-control m-1" id="roundDate" placeholder="Date (example: 2023-09-26)">
             <button id="addRound" class="btn btn-primary">Add Round</button>
             <button id="delRound" class="btn btn-danger" disabled = true>Delete Round</button>
         </div>
