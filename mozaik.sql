@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Sze 26. 13:51
+-- Létrehozás ideje: 2023. Sze 26. 21:01
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `mozaik`
 --
+CREATE DATABASE IF NOT EXISTS `mozaik` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mozaik`;
 
 -- --------------------------------------------------------
 
