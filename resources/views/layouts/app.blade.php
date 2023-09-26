@@ -93,6 +93,9 @@
         var competitor_name_selected, competitor_email_selected;
         var user_name_tmp, user_email_tmp;
         var competitions = [];
+        /**
+         * Az oldal betöltésekor lefutó inicializációs függvény.
+         */
         $(document).ready(function() {
             $('.round').hide();
             competitionAjax();
@@ -103,6 +106,9 @@
                 competitionAjaxAdd();
             });
         });
+        /**
+         * Az aktuális verseny kijelölését kezelő függvény.
+         */
         function competitionInitTable() {
             $(document).ready(function() {
                 $('#competitionTable tbody tr').click(function() {
@@ -126,6 +132,9 @@
                 }
             });
         };
+        /**
+         * Versenyek lekérdezése és táblázat frissítése AJAX hívással.
+         */
         function competitionAjax(){
             $.ajax({
                 url: '/competitions',
@@ -149,6 +158,9 @@
                 }
             });
         }
+        /**
+         * Verseny törlése AJAX hívással.
+         */
         function competitionAjaxDel(){
             var competitionDelParams = {
                 name : competition_name_selected,
@@ -171,6 +183,9 @@
                 }
             });
         }
+        /**
+         * Verseny hozzáadása AJAX hívással.
+         */
         function competitionAjaxAdd(){
             var competitionAddParams = {
                 name : $('#competitionName').val(),
@@ -196,6 +211,9 @@
             $('#competitionYear').val('');
             $('#competitionLocation').val('');
         }
+        /**
+         * Az oldal betöltésekor lefutó inicializációs függvény.
+         */
         $(document).ready(function() {
             $('.competitor').hide();
             roundInitTable();
@@ -206,6 +224,9 @@
                 roundAjaxAdd();
             });
         });
+        /**
+         * Az aktuális forduló kijelölését kezelő függvény.
+         */
         function roundInitTable() {
             $(document).ready(function() {
                 $('#roundTable tbody tr').click(function() {
@@ -229,6 +250,9 @@
                 }
             });
         };
+        /**
+         * Fordulók lekérdezése és táblázat frissítése AJAX hívással.
+         */
         function roundAjax(){
             var competitionParams = {
                 name : competition_name_selected,
@@ -262,6 +286,9 @@
                 }
             });
         }
+        /**
+         * Forudló törlése AJAX hívással.
+         */
         function roundAjaxDel(){
             var roundDelParams = {
                 id : round_id_selected
@@ -283,6 +310,9 @@
                 }
             });
         }
+        /**
+         * Forduló hozzáadása AJAX hívással.
+         */
         function roundAjaxAdd(){
             var roundAddParams = {
                 name : $('#roundName').val(),
@@ -311,6 +341,9 @@
             $('#roundDate').val('');
         }
 
+        /**
+         * Az oldal betöltésekor lefutó inicializációs függvény.
+         */
         $(document).ready(function() {
             competitorInitTable();
             $('#delCompetitor').click(function(){
@@ -320,6 +353,9 @@
                 competitorAjaxAdd();
             });
         });
+        /**
+         * Az aktuális versenyző kijelölését kezelő függvény.
+         */
         function competitorInitTable() {
             $(document).ready(function() {
                 $('#competitorTable tbody tr').click(function() {
@@ -344,6 +380,9 @@
                 }
             });
         };
+        /**
+         * Versenyzők lekérdezése és táblázat frissítése AJAX hívással.
+         */
         function competitorAjax(){
             var roundParams = {
                 id : round_id_selected
@@ -378,6 +417,9 @@
                 }
             });
         }
+        /**
+         * Versenyző törlése AJAX hívással.
+         */
         function competitorAjaxDel(){
             var competitorDelParams = {
                 name : competitor_name_selected,
@@ -400,6 +442,9 @@
                 }
             });
         }
+        /**
+         * Versenyző hozzáadása AJAX hívással.
+         */
         function competitorAjaxAdd(){
             $selected = $('#competitiorUser').val().split('-');
             var competitorAddParams = {
@@ -424,6 +469,9 @@
                 }
             });
         }
+        /**
+         * Felhasználók lekérdezése AJAX hívással.
+         */
         function userAjax(){
             var competitionInUser;
             $.ajax({

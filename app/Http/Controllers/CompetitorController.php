@@ -5,14 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Competitor;
 
+/**
+ * A CompetitorController osztály kezeli a versenyzőkkel kapcsolatos műveleteket.
+ */
 class CompetitorController extends Controller
 {
-    public function index(Request $request){
+    /**
+     * Visszaadja az összes versenyzőt JSON formátumban egy adott kör alapján.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(Request $request)
+    {
         $id = $request->input('id');
         $competitors = Competitor::where('round_id', $id)->get();
         return response()->json($competitors);
     }
-    public function create(Request $request){
+
+    /**
+     * Létrehoz egy új versenyzőt a megadott adatokkal.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function create(Request $request)
+    {
         $name = $request->input('name');
         $email = $request->input('email');
         $id = $request->input('round_id');
@@ -25,7 +43,14 @@ class CompetitorController extends Controller
         return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function destroy(Request $request){
+    /**
+     * Törli a versenyzőt a megadott név, e-mail és kör alapján.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Request $request)
+    {
         $name = $request->input('name');
         $email = $request->input('email');
         $id = $request->input('round_id');

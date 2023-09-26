@@ -4,13 +4,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Competition;
 
+/**
+ * A CompetitionController osztály kezeli a versenyekkel kapcsolatos műveleteket.
+ */
 class CompetitionController extends Controller
 {
-    public function index(){
+    /**
+     * Visszaadja az összes versenyt JSON formátumban.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
         $competitions = Competition::all();
         return response()->json($competitions);
     }
-    public function create(Request $request){
+
+    /**
+     * Létrehoz egy új versenyt a megadott adatokkal.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function create(Request $request)
+    {
         $name = $request->input('name');
         $year = $request->input('year');
         $location = $request->input('location');
@@ -24,7 +41,14 @@ class CompetitionController extends Controller
         return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function destroy(Request $request){
+    /**
+     * Törli a versenyt a megadott név és év alapján.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Request $request)
+    {
         $name = $request->input('name');
         $year = $request->input('year');
         Competition::where('name', $name)->where('year', $year)->delete();

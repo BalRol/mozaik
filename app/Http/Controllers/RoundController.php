@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Round;
 
+/**
+ * A RoundController osztály kezeli a körökkel kapcsolatos műveleteket.
+ */
 class RoundController extends Controller
 {
+    /**
+     * Visszaadja az összes kör JSON formátumban egy adott verseny alapján.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         $name = $request->input('name');
@@ -14,6 +23,13 @@ class RoundController extends Controller
         $rounds = Round::where('competition_name', $name)->where('competition_year', $year)->get();
         return response()->json($rounds);
     }
+
+    /**
+     * Létrehoz egy új kört a megadott adatokkal.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create(Request $request)
     {
         $name = $request->input('name');
@@ -33,7 +49,14 @@ class RoundController extends Controller
         return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function destroy(Request $request){
+    /**
+     * Törli a kört a megadott azonosító alapján.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Request $request)
+    {
         $id = $request->input('id');
         Round::where('id', $id)->delete();
         return response()->json(['message' => 'Sikeres'], 200);
