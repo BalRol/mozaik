@@ -5,6 +5,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Round extends Model
 {
+    protected $fillable = [
+        'name',
+        'location',
+        'date',
+        'competition_name',
+        'competition_year'
+    ];
+
+
+
+
     protected $table = 'round';
     public $timestamps = false;
 

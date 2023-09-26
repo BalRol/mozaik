@@ -405,7 +405,7 @@
             var competitorAddParams = {
                 name : $selected[0],
                 email : $selected[1],
-                id : round_id_selected
+                round_id : round_id_selected
             };
             $.ajax({
                 url: '/competitorAdd',

@@ -15,7 +15,7 @@ class CompetitorController extends Controller
     public function create(Request $request){
         $name = $request->input('name');
         $email = $request->input('email');
-        $id = $request->input('id');
+        $id = $request->input('round_id');
 
         $competitor = new Competitor;
         $competitor->name = $name;
@@ -28,7 +28,7 @@ class CompetitorController extends Controller
     public function destroy(Request $request){
         $name = $request->input('name');
         $email = $request->input('email');
-        $id = $request->input('id');
+        $id = $request->input('round_id');
         Competitor::where('name', $name)->where('email', $email)->where('round_id', $id)->delete();
         return response()->json(['message' => 'Sikeres'], 200);
     }
