@@ -382,7 +382,7 @@
             var competitorDelParams = {
                 name : competitor_name_selected,
                 email : competitor_email_selected,
-                id : round_id_selected
+                round_id : round_id_selected
             };
             $.ajax({
                 url: '/competitorDel',
