@@ -6,42 +6,28 @@ use App\Models\Competition;
 
 class CompetitionController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $competitions = Competition::all();
         return response()->json($competitions);
     }
-/*
-    public function create()
-    {
-        return view('competitions.create');
+    public function create(Request $request){
+        $name = $request->input('name');
+        $year = $request->input('year');
+        $location = $request->input('location');
+
+        $competition = new Competition;
+        $competition->name = $name;
+        $competition->year = $year;
+        $competition->location = $location;
+        $competition->save();
+
+        return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function store(Request $request)
-    {
-        // Logika a verseny létrehozásához
+    public function destroy(Request $request){
+        $name = $request->input('name');
+        $year = $request->input('year');
+        Competition::where('name', $name)->where('year', $year)->delete();
+        return response()->json(['message' => 'Sikeres'], 200);
     }
-
-    public function show($name, $year)
-    {
-        $competition = Competition::findOrFail([$name, $year]);
-        return view('competitions.show', compact('competition'));
-    }
-
-    public function edit($name, $year)
-    {
-        $competition = Competition::findOrFail([$name, $year]);
-        return view('competitions.edit', compact('competition'));
-    }
-
-    public function update(Request $request, $name, $year)
-    {
-        // Logika a verseny frissítéséhez
-    }
-
-    public function destroy($name, $year)
-    {
-        // Logika a verseny törléséhez
-    }
-    */
 }

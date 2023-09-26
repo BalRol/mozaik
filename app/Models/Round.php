@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Round extends Model
 {
     protected $table = 'round';
-    public $timestamps = true;
+    public $timestamps = false;
 
     public function competition()
     {

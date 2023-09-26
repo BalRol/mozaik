@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,42 +7,35 @@ use App\Models\Round;
 
 class RoundController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $rounds = Round::all();
+        $name = $request->input('name');
+        $year = $request->input('year');
+        $rounds = Round::where('competition_name', $name)->where('competition_year', $year)->get();
         return response()->json($rounds);
     }
-/*
-    public function create()
+    public function create(Request $request)
     {
-        return view('rounds.create');
+        $name = $request->input('name');
+        $location = $request->input('location');
+        $date = $request->input('date');
+        $competition_name = $request->input('competition_name');
+        $competition_year = $request->input('competition_year');
+
+        $round = new Round;
+        $round->name = $name;
+        $round->location = $location;
+        $round->date = $date;
+        $round->competition_name = $competition_name;
+        $round->competition_year = $competition_year;
+        $round->save();
+
+        return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function store(Request $request)
-    {
-        // Logika a forduló létrehozásához
+    public function destroy(Request $request){
+        $id = $request->input('id');
+        Round::where('id', $id)->delete();
+        return response()->json(['message' => 'Sikeres'], 200);
     }
-
-    public function show($id)
-    {
-        $round = Round::findOrFail($id);
-        return view('rounds.show', compact('round'));
-    }
-
-    public function edit($id)
-    {
-        $round = Round::findOrFail($id);
-        return view('rounds.edit', compact('round'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Logika a forduló frissítéséhez
-    }
-
-    public function destroy($id)
-    {
-        // Logika a forduló törléséhez
-    }
-    */
 }

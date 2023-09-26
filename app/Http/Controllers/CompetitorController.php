@@ -7,42 +7,29 @@ use App\Models\Competitor;
 
 class CompetitorController extends Controller
 {
-    public function index()
-    {
-        $competitors = Competitor::all();
+    public function index(Request $request){
+        $id = $request->input('id');
+        $competitors = Competitor::where('round_id', $id)->get();
         return response()->json($competitors);
     }
-/*
-    public function create()
-    {
-        return view('competitors.create');
+    public function create(Request $request){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $id = $request->input('id');
+
+        $competitor = new Competitor;
+        $competitor->name = $name;
+        $competitor->email = $email;
+        $competitor->round_id = $id;
+        $competitor->save();
+        return response()->json(['message' => 'Sikeres'], 200);
     }
 
-    public function store(Request $request)
-    {
-        // Logika a versenyző létrehozásához
+    public function destroy(Request $request){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $id = $request->input('id');
+        Competitor::where('name', $name)->where('email', $email)->where('round_id', $id)->delete();
+        return response()->json(['message' => 'Sikeres'], 200);
     }
-
-    public function show($id)
-    {
-        $competitor = Competitor::findOrFail($id);
-        return view('competitors.show', compact('competitor'));
-    }
-
-    public function edit($id)
-    {
-        $competitor = Competitor::findOrFail($id);
-        return view('competitors.edit', compact('competitor'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        // Logika a versenyző frissítéséhez
-    }
-
-    public function destroy($id)
-    {
-        // Logika a versenyző törléséhez
-    }
-    */
 }
